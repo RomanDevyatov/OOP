@@ -38,4 +38,23 @@ public class MyTriangle extends MyPoint {
         if(v1.distance(v2)==v2.distance(v3)||v1.distance(v2)==v3.distance(v1)||v2.distance(v3)==v3.distance(v1)) return "Isosceles";
         return "Scalene";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyTriangle that = (MyTriangle) o;
+        return Objects.equals(v1, that.v1) &&
+                Objects.equals(v2, that.v2) &&
+                Objects.equals(v3, that.v3);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31*result+v1.hashCode();
+        result = 31*result+v2.hashCode();
+        result = 31*result+v3.hashCode();
+        return result;
+    }
 }
