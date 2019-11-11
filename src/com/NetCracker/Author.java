@@ -21,4 +21,23 @@ public class Author {
     public char getGender() {
         return this.gender;
     }
+
+@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return gender == author.gender &&
+                Objects.equals(name, author.name) &&
+                Objects.equals(email, author.email);
+    }
+
+    @Override
+    public int hashCode() {
+        int res = 17;
+        res = 31*res+name.hashCode();
+        res = 31*res+email.hashCode();
+        res = 31*res+(int)gender;
+        return res;
+    }
 }
