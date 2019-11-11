@@ -37,4 +37,21 @@ public class Circle {
         return Math.PI*Math.pow(this.radius, 2);
     }
 
+@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Circle circle = (Circle) o;
+        return Double.compare(circle.radius, radius) == 0 &&
+                Objects.equals(color, circle.color);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31*result + (int)Double.doubleToLongBits(radius);
+        result = 31*result + color.hashCode();
+        return result;
+    }
+
 }
